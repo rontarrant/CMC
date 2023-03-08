@@ -1,0 +1,300 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://button/ButtonRESETnormal.png" type="Texture" id=1]
+[ext_resource path="res://button/ButtonNEXTnormal.png" type="Texture" id=2]
+[ext_resource path="res://mockup/CMCalculator - Screen 02 - Step 1 - Cost v2.png" type="Texture" id=3]
+[ext_resource path="res://fonts/MyriadPro-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://background/background02.png" type="Texture" id=5]
+[ext_resource path="res://logo/SimpleTools_logo_small.png" type="Texture" id=6]
+[ext_resource path="res://logo/productSmall.png" type="Texture" id=7]
+[ext_resource path="res://fonts/arial.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://button/ButtonNEXTpressed.png" type="Texture" id=9]
+[ext_resource path="res://button/ButtonRESETpressed.png" type="Texture" id=10]
+[ext_resource path="res://scripts/Cost.gd" type="Script" id=11]
+[ext_resource path="res://button/ButtonHELPnormal.png" type="Texture" id=12]
+[ext_resource path="res://button/ButtonHELPpressed.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_color = Color( 0.0666667, 0.270588, 0.94902, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[node name="Cost" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+stretch_mode = 1
+
+[node name="Mock-up" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="Top MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 60
+custom_constants/margin_top = 34
+
+[node name="Control" type="Control" parent="Top MarginContainer"]
+margin_top = 34.0
+margin_right = 540.0
+margin_bottom = 1024.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Top MarginContainer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -476.0
+margin_bottom = 197.0
+custom_constants/separation = 22
+
+[node name="TextureRect" type="TextureRect" parent="Top MarginContainer/Control/HBoxContainer"]
+margin_right = 275.0
+margin_bottom = 197.0
+texture = ExtResource( 6 )
+
+[node name="TextureRect2" type="TextureRect" parent="Top MarginContainer/Control/HBoxContainer"]
+margin_left = 297.0
+margin_right = 494.0
+margin_bottom = 197.0
+texture = ExtResource( 7 )
+
+[node name="Row 2 MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -2.0
+custom_constants/margin_right = 120
+custom_constants/margin_top = -281
+
+[node name="Control2" type="Control" parent="Row 2 MarginContainer"]
+margin_top = -281.0
+margin_right = 480.0
+margin_bottom = 1022.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Row 2 MarginContainer/Control2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -388.0
+margin_top = -36.5
+margin_bottom = 36.5
+
+[node name="Label" type="Label" parent="Row 2 MarginContainer/Control2/MarginContainer2"]
+margin_right = 388.0
+margin_bottom = 73.0
+custom_colors/font_color = Color( 0.0745098, 0.235294, 0.854902, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Step 1:
+Calculate Mortgage Principal"
+
+[node name="Row 3 Inputs MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -512.0
+margin_bottom = 512.0
+custom_constants/margin_right = -154
+custom_constants/margin_top = 152
+
+[node name="Control2" type="Control" parent="Row 3 Inputs MarginContainer"]
+margin_top = 152.0
+margin_right = 754.0
+margin_bottom = 1024.0
+
+[node name="GridContainer" type="GridContainer" parent="Row 3 Inputs MarginContainer/Control2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -376.0
+margin_top = -91.5
+margin_bottom = 91.5
+custom_constants/vseparation = 15
+custom_constants/hseparation = 14
+columns = 2
+
+[node name="Control" type="Control" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+margin_bottom = 51.0
+
+[node name="costHousePriceLabel" type="Label" parent="Row 3 Inputs MarginContainer/Control2/GridContainer/Control"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -202.0
+margin_top = -17.5
+margin_bottom = 18.5
+custom_colors/font_color = Color( 0.603922, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "House Price $"
+
+[node name="costHomePrice" type="LineEdit" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+unique_name_in_owner = true
+margin_left = 14.0
+margin_right = 184.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 0.988235, 0.862745, 0.721569, 1 )
+custom_colors/font_color_uneditable = Color( 0.988235, 0.862745, 0.721569, 1 )
+custom_constants/minimum_spaces = 16
+custom_fonts/font = SubResource( 3 )
+align = 2
+editable = false
+virtual_keyboard_enabled = false
+
+[node name="Control3" type="Control" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+margin_top = 66.0
+margin_bottom = 117.0
+
+[node name="costDownPaymentLabel" type="Label" parent="Row 3 Inputs MarginContainer/Control2/GridContainer/Control3"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -258.0
+margin_top = -17.5
+margin_bottom = 18.5
+custom_colors/font_color = Color( 0.603922, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Down Payment $"
+
+[node name="costDownPayment" type="LineEdit" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+unique_name_in_owner = true
+margin_left = 14.0
+margin_top = 66.0
+margin_right = 184.0
+margin_bottom = 117.0
+custom_colors/font_color = Color( 0.988235, 0.862745, 0.721569, 1 )
+custom_colors/font_color_uneditable = Color( 0.988235, 0.862745, 0.721569, 1 )
+custom_constants/minimum_spaces = 16
+custom_fonts/font = SubResource( 3 )
+align = 2
+virtual_keyboard_enabled = false
+
+[node name="Control2" type="Control" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+margin_top = 132.0
+margin_bottom = 183.0
+
+[node name="costInterestRateLabel" type="Label" parent="Row 3 Inputs MarginContainer/Control2/GridContainer/Control2"]
+unique_name_in_owner = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -226.0
+margin_top = -17.5
+margin_bottom = 18.5
+custom_colors/font_color = Color( 0.603922, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Interest Rate %"
+
+[node name="costInterestRate" type="LineEdit" parent="Row 3 Inputs MarginContainer/Control2/GridContainer"]
+unique_name_in_owner = true
+margin_left = 14.0
+margin_top = 132.0
+margin_right = 184.0
+margin_bottom = 183.0
+custom_colors/font_color = Color( 0.988235, 0.862745, 0.721569, 1 )
+custom_constants/minimum_spaces = 16
+custom_fonts/font = SubResource( 3 )
+align = 2
+virtual_keyboard_enabled = false
+
+[node name="HelpMarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = 256.0
+margin_bottom = 380.0
+
+[node name="BottomControl" type="Control" parent="HelpMarginContainer"]
+margin_right = 600.0
+margin_bottom = 124.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HelpMarginContainer/BottomControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = -52.0
+margin_right = 93.0
+margin_bottom = 52.0
+custom_constants/separation = 2
+
+[node name="costHelp" type="TextureButton" parent="HelpMarginContainer/BottomControl/HBoxContainer"]
+margin_right = 186.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+
+[node name="Bottom MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -140.0
+margin_right = 300.0
+custom_constants/margin_right = 102
+custom_constants/margin_bottom = 9
+
+[node name="Control3" type="Control" parent="Bottom MarginContainer"]
+margin_right = 498.0
+margin_bottom = 131.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom MarginContainer/Control3"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -477.0
+margin_top = -52.0
+margin_bottom = 52.0
+custom_constants/separation = 184
+
+[node name="costReset" type="TextureButton" parent="Bottom MarginContainer/Control3/HBoxContainer"]
+margin_right = 186.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 10 )
+
+[node name="costNext" type="TextureButton" parent="Bottom MarginContainer/Control3/HBoxContainer"]
+margin_left = 370.0
+margin_right = 556.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 9 )
+
+[connection signal="focus_entered" from="Row 3 Inputs MarginContainer/Control2/GridContainer/costHomePrice" to="." method="edit_home_price"]
+[connection signal="focus_entered" from="Row 3 Inputs MarginContainer/Control2/GridContainer/costDownPayment" to="." method="edit_down_payment"]
+[connection signal="focus_entered" from="Row 3 Inputs MarginContainer/Control2/GridContainer/costInterestRate" to="." method="edit_interest_rate"]
+[connection signal="pressed" from="HelpMarginContainer/BottomControl/HBoxContainer/costHelp" to="." method="get_help"]
+[connection signal="pressed" from="Bottom MarginContainer/Control3/HBoxContainer/costReset" to="." method="reset_all"]
+[connection signal="pressed" from="Bottom MarginContainer/Control3/HBoxContainer/costNext" to="." method="next_screen"]

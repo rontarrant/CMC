@@ -1,0 +1,227 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://fonts/arial.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://background/background02.png" type="Texture" id=2]
+[ext_resource path="res://logo/SimpleTools_logo_small.png" type="Texture" id=3]
+[ext_resource path="res://logo/productSmall.png" type="Texture" id=4]
+[ext_resource path="res://button/ButtonOKnormal.png" type="Texture" id=5]
+[ext_resource path="res://button/ButtonOKpressed.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Help.gd" type="Script" id=7]
+[ext_resource path="res://fonts/arialbd.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/ariali.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="Help" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="BG" type="TextureRect" parent="."]
+margin_right = 600.0
+margin_bottom = 1024.0
+texture = ExtResource( 2 )
+
+[node name="MockUp TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 600.0
+margin_bottom = 1024.0
+
+[node name="LogoMarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = -748.0
+custom_constants/margin_top = 32
+custom_constants/margin_left = 35
+
+[node name="TopControl" type="Control" parent="LogoMarginContainer"]
+margin_left = 35.0
+margin_top = 32.0
+margin_right = 600.0
+margin_bottom = 275.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LogoMarginContainer/TopControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 71
+
+[node name="LogoTextureRect" type="TextureRect" parent="LogoMarginContainer/TopControl/HBoxContainer"]
+margin_right = 275.0
+margin_bottom = 243.0
+texture = ExtResource( 3 )
+
+[node name="ProductTextureRect" type="TextureRect" parent="LogoMarginContainer/TopControl/HBoxContainer"]
+margin_left = 346.0
+margin_right = 543.0
+margin_bottom = 243.0
+texture = ExtResource( 4 )
+
+[node name="Middle MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 82
+custom_constants/margin_top = 202
+
+[node name="Control2" type="Control" parent="Middle MarginContainer"]
+margin_top = 202.0
+margin_right = 518.0
+margin_bottom = 1024.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Middle MarginContainer/Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 147.0
+margin_right = 58.0
+margin_bottom = -164.0
+custom_constants/margin_top = -102
+custom_constants/margin_left = 40
+
+[node name="HelpLabel" type="RichTextLabel" parent="Middle MarginContainer/Control2/MarginContainer2"]
+unique_name_in_owner = true
+margin_left = 40.0
+margin_top = -102.0
+margin_right = 576.0
+margin_bottom = 511.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = SubResource( 1 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[b][color=maroon]HELP[/color][/b]
+1) Touching any field activates the custom [i]Keypad[/i]. Use the [i]Keypad[/i] to enter numbers.
+
+2) Keypad Operation is the same as a calculator. Select [i]OK[/i] when done.
+CLEAR - Start over.
+BCKSP - (Backspace) Delete the last character.
+CAN - Cancel the operation and return to previous screen.
+OK - Yeah, you know what this means.
+
+3) When all amounts ([i]Home Price[/i], [i]Down Payment[/i], and [i]Interest Rate[/i]) are entered on the first screen ([i]Cost[/i]), select the [i]>[/i] (Next) button.
+
+4) In the second screen ([i]Mortgage[/i]) the first two fields will be filled in based on what you entered on the [i]Cost[/i] screen.
+
+5) Fill in the [i]Term[/i] and [i]Amortization Period[/i]. Select [i]>[/i] (Next) again to see results.
+
+[b][color=maroon]Home Price[/color][/b]: The full sticker price of the house. This is either the asking price or the offer you intend to make.
+
+[b][color=maroon]Interest Rate[/color][/b]: Quoted by the bank.
+
+[b][color=maroon]Down Payment[/color][/b]: The amount you pay up front. This is subtracted from [i]Home Price[/i] and what you're left with is the [i]Principal[/i].
+
+[b][color=maroon]Principal[/color][/b]: This amount is what the lender will provide.
+
+[b][color=maroon]Mortgage Term[/color][/b]: This is most commonly either three or five years, but some lenders allow as little as six months or as much as ten years.
+
+[b][color=maroon]Amortization Period[/color][/b]: By law, this can be anywhere from six months to 35 years. Most borrowers are offered a 25-year mortgage. [i][color=maroon]High Ratio[/color][/i] mortgages (see below) are restricted to a 25-year maximum. Low ratio mortgages are legally allowed to be amortized over a period of up to 35 years in Canada, but most lenders don't offer more than 30 years.
+
+[b][color=maroon]High Ratio Mortgages[/color][/b]
+If you have less that 20% to apply as a down payment, this is considered a high-ratio mortgage. This represents a higher risk to the lender.
+
+To offset that risk, the Canadian Mortgage and Housing Corporation (CMHC) steps in to insure all high-ratio mortgages. This is also beneficial to the borrower when home prices are high as it allows buying more expensive homes with less money down.
+
+However, the borrower pays a premium for CMHC coverage. This premium is a percentage of the home cost and depends on the size of the down payment.
+
+[i]In the table below, the left column shows down payments as percentages of the home price; the right column shows CMHC coverage as percentages of the mortgage principal (home price minus down payment.)[/i]
+
+[table=2]
+[cell]Down Payment[/cell]
+[cell]Premium[/cell]
+[cell]5-9.99%[/cell]
+[cell]4%[/cell]
+[cell]10-14.99%[/cell]
+[cell]3.1%[/cell]
+[cell]15-19.99%[/cell]
+[cell]2.8%[/cell]
+[/table]
+
+[b][color=maroon]Taxes on CMHC Premium[/color][/b]
+In Ontario, Quebec, and Saskatchewan, you will also pay provincial sales tax on the CMHC premium. This cost cannot be included in the mortgage and must be paid as part of closing costs.
+"
+text = "HELP
+1) Touching any field activates the custom Keypad. Use the Keypad to enter numbers.
+
+2) Keypad Operation is the same as a calculator. Select OK when done.
+CLEAR - Start over.
+BCKSP - (Backspace) Delete the last character.
+CAN - Cancel the operation and return to previous screen.
+OK - Yeah, you know what this means.
+
+3) When all amounts (Home Price, Down Payment, and Interest Rate) are entered on the first screen (Cost), select the > (Next) button.
+
+4) In the second screen (Mortgage) the first two fields will be filled in based on what you entered on the Cost screen.
+
+5) Fill in the Term and Amortization Period. Select > (Next) again to see results.
+
+Home Price: The full sticker price of the house. This is either the asking price or the offer you intend to make.
+
+Interest Rate: Quoted by the bank.
+
+Down Payment: The amount you pay up front. This is subtracted from Home Price and what you're left with is the Principal.
+
+Principal: This amount is what the lender will provide.
+
+Mortgage Term: This is most commonly either three or five years, but some lenders allow as little as six months or as much as ten years.
+
+Amortization Period: By law, this can be anywhere from six months to 35 years. Most borrowers are offered a 25-year mortgage. High Ratio mortgages (see below) are restricted to a 25-year maximum. Low ratio mortgages are legally allowed to be amortized over a period of up to 35 years in Canada, but most lenders don't offer more than 30 years.
+
+High Ratio Mortgages
+If you have less that 20% to apply as a down payment, this is considered a high-ratio mortgage. This represents a higher risk to the lender.
+
+To offset that risk, the Canadian Mortgage and Housing Corporation (CMHC) steps in to insure all high-ratio mortgages. This is also beneficial to the borrower when home prices are high as it allows buying more expensive homes with less money down.
+
+However, the borrower pays a premium for CMHC coverage. This premium is a percentage of the home cost and depends on the size of the down payment.
+
+In the table below, the left column shows down payments as percentages of the home price; the right column shows CMHC coverage as percentages of the mortgage principal (home price minus down payment.)
+
+Down PaymentPremium5-9.99%4%10-14.99%3.1%15-19.99%2.8%
+
+Taxes on CMHC Premium
+In Ontario, Quebec, and Saskatchewan, you will also pay provincial sales tax on the CMHC premium. This cost cannot be included in the mortgage and must be paid as part of closing costs.
+"
+
+[node name="BottomMarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 891.0
+custom_constants/margin_right = -49
+custom_constants/margin_bottom = 24
+
+[node name="BottomControl" type="Control" parent="BottomMarginContainer"]
+margin_right = 649.0
+margin_bottom = 109.0
+
+[node name="OKButtonMarginContainer" type="MarginContainer" parent="BottomMarginContainer/BottomControl"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -324.5
+margin_top = -104.0
+margin_right = 273.5
+custom_constants/margin_left = 210
+
+[node name="helpOK" type="TextureButton" parent="BottomMarginContainer/BottomControl/OKButtonMarginContainer"]
+margin_left = 210.0
+margin_right = 598.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+
+[connection signal="pressed" from="BottomMarginContainer/BottomControl/OKButtonMarginContainer/helpOK" to="." method="back_to_work"]

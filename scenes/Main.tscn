@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Summary.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Mortgage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Cost.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Welcome.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/About.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Math.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Sanity.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Numpad.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Error.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Help.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Main.gd" type="Script" id=11]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 11 )
+
+[node name="Welcome" parent="." instance=ExtResource( 4 )]
+unique_name_in_owner = true
+
+[node name="About" parent="." instance=ExtResource( 5 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Cost" parent="." instance=ExtResource( 3 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Mortgage" parent="." instance=ExtResource( 2 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Summary" parent="." instance=ExtResource( 1 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Numpad" parent="." instance=ExtResource( 8 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Error" parent="." instance=ExtResource( 9 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Help" parent="." instance=ExtResource( 10 )]
+unique_name_in_owner = true
+margin_left = 600.0
+margin_right = 600.0
+
+[node name="Math" parent="." instance=ExtResource( 6 )]
+unique_name_in_owner = true
+
+[node name="Sanity" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+
+[node name="Tween" type="Tween" parent="."]
+unique_name_in_owner = true
+
+[connection signal="get_help" from="Welcome" to="." method="show_help"]
+[connection signal="goto_about" from="Welcome" to="." method="goto_about_screen"]
+[connection signal="goto_start" from="Welcome" to="." method="goto_cost_screen"]
+[connection signal="done_with_about" from="About" to="." method="previous_screen"]
+[connection signal="cost_sanity_check" from="Cost" to="Sanity" method="check_cost_entries"]
+[connection signal="edit_field" from="Cost" to="." method="edit_field"]
+[connection signal="get_help" from="Cost" to="." method="show_help"]
+[connection signal="reset_all" from="Cost" to="." method="reset_all"]
+[connection signal="displayed" from="Mortgage" to="." method="goto_mortgage_screen"]
+[connection signal="edit_field" from="Mortgage" to="." method="edit_field"]
+[connection signal="get_help" from="Mortgage" to="." method="show_help"]
+[connection signal="mortgage_sanity_check" from="Mortgage" to="Sanity" method="mortgage_sanity_check"]
+[connection signal="previous_pressed" from="Mortgage" to="." method="previous_screen"]
+[connection signal="reset_all" from="Mortgage" to="." method="reset_all"]
+[connection signal="previous_pressed" from="Summary" to="." method="previous_screen"]
+[connection signal="reset_all" from="Summary" to="." method="reset_all"]
+[connection signal="show_final" from="Summary" to="." method="goto_summary"]
+[connection signal="cancel_button_signal" from="Numpad" to="." method="previous_screen"]
+[connection signal="sane_input_check" from="Numpad" to="Sanity" method="match_field"]
+[connection signal="error_ok_pressed" from="Error" to="." method="previous_screen"]
+[connection signal="error_text_ready" from="Error" to="." method="goto_error_screen"]
+[connection signal="done_with_help" from="Help" to="." method="previous_screen"]
+[connection signal="amortization_stored" from="Math" to="." method="display_amortization"]
+[connection signal="display_final" from="Math" to="Summary" method="display_final_calculations"]
+[connection signal="down_payment_stored" from="Math" to="." method="display_down_payment"]
+[connection signal="home_price_stored" from="Math" to="." method="display_home_price"]
+[connection signal="interest_rate_stored" from="Math" to="." method="display_interest_rate"]
+[connection signal="principal_stored" from="Math" to="Mortgage" method="display_calculated_values"]
+[connection signal="term_stored" from="Math" to="." method="display_term"]
+[connection signal="amortization_period_okay" from="Sanity" to="Math" method="store_value"]
+[connection signal="down_payment_okay" from="Sanity" to="Math" method="store_value"]
+[connection signal="error_condition" from="Sanity" to="Error" method="set_error_text"]
+[connection signal="home_price_okay" from="Sanity" to="Math" method="store_value"]
+[connection signal="interest_rate_okay" from="Sanity" to="Math" method="store_value"]
+[connection signal="mortgage_fields_okay" from="Sanity" to="Math" method="calculate_monthly_payments"]
+[connection signal="mortgage_term_okay" from="Sanity" to="Math" method="store_value"]
+[connection signal="price_to_down_okay" from="Sanity" to="Math" method="store_principal"]
+[connection signal="set_high_ratio_flag" from="Sanity" to="Math" method="set_high_ratio_flag"]
